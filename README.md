@@ -1,6 +1,8 @@
 # ClaudeCodeMonitor
 
-<p align="center"><img src="docs/images/session.gif" alt="Session screen: Clawd walking next to 42%, with the session time bar underneath" width="544"></p>
+<p align="center"><img src="docs/images/on-monitor.jpg" alt="The clock mounted on top of a monitor, showing Clawd next to 59% session usage" width="800"></p>
+
+<p align="center"><img src="docs/images/session.gif" alt="Session screen: Clawd walking next to 42%, with the session time bar underneath" width="408"></p>
 
 See how much of your Claude Code allowance you have used, on a pixel clock on your desk.
 
@@ -11,7 +13,7 @@ A small Windows program checks your usage every 2 minutes and shows it on a Ulan
 - A **Ulanzi TC001** pixel clock with the free [AWTRIX3](https://blueforcer.github.io/awtrix3/) firmware installed (their site has a one-click web installer)
 - A **Windows PC** with [Claude Code](https://claude.com/claude-code) installed and logged in
 - The [.NET 10 SDK](https://dotnet.microsoft.com/download) (only needed to build the program)
-- Optional: a [3D-printed monitor mount](https://makerworld.com/en/models/3327763-ulanzi-tc001-monitor-mount) to put the clock on top of your screen
+- Optional: my [3D-printed monitor mount](#mount-it-on-your-monitor) to put the clock on top of your screen, like in the photo
 
 ## Get started
 
@@ -148,7 +150,14 @@ The images in this README are rendered from the monitor's own drawing code, so t
 
 ## Mount it on your monitor
 
-Want the clock at eye level instead of on the desk? I designed a 3D-printable mount for putting the TC001 on your monitor: [Ulanzi TC001 Monitor Mount on MakerWorld](https://makerworld.com/en/models/3327763-ulanzi-tc001-monitor-mount).
+The photo at the top shows the clock in a 3D-printable mount I designed, so your usage is always in view right above the screen you're working on: **[Ulanzi TC001 Monitor Mount on MakerWorld](https://makerworld.com/en/models/3327763-ulanzi-tc001-monitor-mount)**.
+
+- **Clip-on, no adhesive** — a slim front fascia hooks over the monitor's top bezel, rubber pads rest on the top edge, and a folding tail with a rubber foot sits against the back. Nothing touches the screen.
+- **Adjusts without tools** — two friction hinges hold any angle, and the tail folds flat for storage. Optional M12 threaded-rod ballast adds weight if your setup needs it.
+- **Made for curved 1000R monitors**, tested on a Samsung Odyssey G7 32". Only the fascia is shaped to the monitor: a quick-to-print curve gauge checks the fit, and the included Python source regenerates the fascia for another curve (or a flat monitor).
+- **Hardware**: 8 × M3 heat-set inserts, 8 × M3×8 socket-head screws, 4 × M3 washers, and some rubber pads. Needs a 256 × 256 mm print bed.
+
+Full print settings, parts list and assembly steps are on the MakerWorld page.
 
 ## Disclaimer
 
