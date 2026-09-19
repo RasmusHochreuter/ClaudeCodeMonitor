@@ -85,6 +85,7 @@ All optional. The first-run question saves your clock's address to `appsettings.
   }
 }
 ```
+
 The local file wins, and environment variables such as `Monitor__AwtrixHost` win over both.
 
 | Setting | Default | Description |
