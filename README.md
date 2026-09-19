@@ -11,6 +11,7 @@ A small Windows program checks your usage every 2 minutes and shows it on a Ulan
 - A **Ulanzi TC001** pixel clock with the free [AWTRIX3](https://blueforcer.github.io/awtrix3/) firmware installed (their site has a one-click web installer)
 - A **Windows PC** with [Claude Code](https://claude.com/claude-code) installed and logged in
 - The [.NET 10 SDK](https://dotnet.microsoft.com/download) (only needed to build the program)
+- Optional: a [3D-printed monitor mount](https://makerworld.com/en/models/3327763-ulanzi-tc001-monitor-mount) to put the clock on top of your screen
 
 ## Get started
 
@@ -144,6 +145,10 @@ Your token is only ever sent to Anthropic. Nothing sensitive is logged or sent t
 The `api/oauth/usage` endpoint is undocumented and may change without notice. The program parses it tolerantly (unknown fields ignored, missing windows treated as 0%) and falls back to the issue screen rather than crashing. It is called at most once per cycle — be a courteous consumer.
 
 The images in this README are rendered from the monitor's own drawing code, so they match the clock pixel for pixel. Regenerate them with `dotnet run --project tools\ScreenshotGenerator`.
+
+## Mount it on your monitor
+
+Want the clock at eye level instead of on the desk? I designed a 3D-printable mount for putting the TC001 on your monitor: [Ulanzi TC001 Monitor Mount on MakerWorld](https://makerworld.com/en/models/3327763-ulanzi-tc001-monitor-mount).
 
 ## Disclaimer
 
