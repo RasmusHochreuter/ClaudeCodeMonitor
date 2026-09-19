@@ -1,0 +1,8 @@
+bin/
+obj/
+publish/
+*.user
+appsettings.Local.json
+
+# Local reference screenshot (third-party content, not part of the project)
+Ulanzi.jpg
