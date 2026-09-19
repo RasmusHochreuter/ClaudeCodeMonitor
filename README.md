@@ -21,21 +21,13 @@ A small Windows program checks your usage every 2 minutes and shows it on a Ulan
 
 **2. Download this repo** and open a terminal in its folder.
 
-**3. Tell the program where your clock is.** Create a file called `appsettings.Local.json` in the repo folder with this content (use your own clock's address):
-
-```json
-{
-  "Monitor": {
-    "AwtrixHost": "192.168.1.42"
-  }
-}
-```
-
-**4. Run it:**
+**3. Run it:**
 
 ```powershell
 dotnet run
 ```
+
+The first time, a small window opens and asks for the clock's address. Type it in and press Enter. The program checks that it can reach the clock and remembers the address, so it only asks once.
 
 That's it. Within a few seconds Clawd shows up on your clock with your usage next to him.
 
@@ -78,16 +70,26 @@ If the program stops, its screens disappear from the clock by themselves within 
 
 - **Grey screen with an orange `!`** — the program is running but can't get fresh data. Usually Claude Code isn't logged in or its login expired; just use Claude Code again and it fixes itself.
 - **Screens disappeared from the clock** — the program isn't running. Start it and they reappear.
-- **`Clock unreachable` warnings** — check the address in `appsettings.Local.json` and that the clock is on your network. No restart needed; it keeps retrying.
+- **`Clock unreachable` warnings** — check the address in `appsettings.Local.json` (your clock may have been given a new IP by your router) and that the clock is on your network. No restart needed; it keeps retrying.
 - **Want to see what it's doing?** — run `dotnet run` in a terminal; all activity is logged there. Tokens and credentials are never logged.
 
 ## Settings
 
-All optional except `AwtrixHost`. Put them in `appsettings.Local.json` (git-ignored, so your network details stay out of the repo) or `appsettings.json`. The local file wins, and environment variables such as `Monitor__AwtrixHost` win over both.
+All optional. The first-run question saves your clock's address to `appsettings.Local.json` (git-ignored, so your network details stay out of the repo); to change it later, edit that file or delete it to be asked again. Other settings can go in the same file or in `appsettings.json`:
+
+```json
+{
+  "Monitor": {
+    "AwtrixHost": "192.168.1.42",
+    "CelebrationSound": false
+  }
+}
+```
+The local file wins, and environment variables such as `Monitor__AwtrixHost` win over both.
 
 | Setting | Default | Description |
 |---|---|---|
-| `Monitor:AwtrixHost` | *(required)* | Clock IP or hostname, e.g. `192.168.1.42` |
+| `Monitor:AwtrixHost` | *(asked on first run)* | Clock IP or hostname, e.g. `192.168.1.42` |
 | `Monitor:PollIntervalMinutes` | `2` | Minutes between usage checks |
 | `Monitor:StaleAfterFailures` | `3` | Failed checks in a row before the issue screen |
 | `Monitor:CelebrationSeconds` | `60` | How long the reset confetti plays |

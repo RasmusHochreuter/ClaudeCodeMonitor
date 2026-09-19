@@ -8,7 +8,7 @@ var builder = Host.CreateApplicationBuilder(args);
 // Machine-specific settings (the clock address) live in a git-ignored file.
 // Environment variables are re-added so they still win over it.
 builder.Configuration
-    .AddJsonFile("appsettings.Local.json", optional: true, reloadOnChange: false)
+    .AddJsonFile(FirstRunSetup.LocalSettingsFile, optional: true, reloadOnChange: false)
     .AddEnvironmentVariables();
 
 builder.Services.Configure<MonitorOptions>(
@@ -17,6 +17,13 @@ builder.Services.Configure<MonitorOptions>(
 var monitorOptions = builder.Configuration
     .GetSection(MonitorOptions.SectionName)
     .Get<MonitorOptions>() ?? new MonitorOptions();
+
+if (string.IsNullOrWhiteSpace(monitorOptions.AwtrixHost) &&
+    await FirstRunSetup.PromptForHostAsync(builder.Environment.ContentRootPath) is { } enteredHost)
+{
+    builder.Configuration[$"{MonitorOptions.SectionName}:{nameof(MonitorOptions.AwtrixHost)}"] = enteredHost;
+    monitorOptions.AwtrixHost = enteredHost;
+}
 
 if (string.IsNullOrWhiteSpace(monitorOptions.AwtrixHost))
 {
